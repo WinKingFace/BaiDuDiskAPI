@@ -17,11 +17,49 @@
 
 ### 接口地址
 > 测试接口 / 随时关闭
- - http://123.60.146.248:8010
- - 扫码登录：/apis/qrlogin
- - 获取在线设备数： /apis/devices
- - 退出登录：/apis/logout
+> 基础URL: http://123.60.146.248:8010
+### 接口地址
+> 测试接口 / 随时关闭
+ - **基础URL**: `http://123.60.146.248:8010`
+ 
+#### 扫码登录
+- **Endpoint**: `/apis/qrlogin`
+- **方法**: POST
+- **请求头**: 
+  - `Cookie`: 用户登录的Cookie信息
+  - `Content-Type`: `application/json`
+- **请求体**: 
+  - `sign` (string): 签名
+  - `local` (string): 位置
+- **示例**:
+  ```json
+  {
+      "sign": "d2bb6e817f98ea3a7e3d89302ece41c6",
+      "local": "上海"
+  }
+  ```
 
+#### 获取在线设备数
+- **Endpoint**: `/apis/devices`
+- **方法**: GET
+- **请求头**: 
+  - `Cookie`: 用户登录的Cookie信息
+- **查询参数**: 
+  - `hasmore` (int): 是否有更多设备，0表示没有更多设备
+
+#### 退出登录
+- **Endpoint**: `/apis/logout`
+- **方法**: POST
+- **请求头**: 
+  - `Cookie`: 用户登录的Cookie信息
+- **请求体**: 
+  - `devices` (array of strings): 设备ID列表
+- **示例**:
+  ```json
+  {
+      "devices": ["118604512741753426"]
+  }
+  ```
 
 ### TODO
 - 后台设计
